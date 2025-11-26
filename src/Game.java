@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Random;
 
 public class Game {
@@ -136,6 +137,25 @@ public class Game {
             System.out.println("END");
         }
     }
+
+    public void runBFS() {
+        BFSPathFinder bfs = new BFSPathFinder();
+        ArrayList<String> result = bfs.findPath(grid, startRow, startCol, goalRow, goalCol);
+
+        if (result == null) {
+            System.out.println("No path found using BFS.");
+            return;
+        }
+
+        System.out.println("This is a path by BFS :");
+        for (String step : result) {
+            if(playerRow!=goalRow&&playerCol!=goalCol)
+                System.out.print(step+" then ");
+        }
+        System.out.println("End");
+        gameOver = true;
+    }
+
 
     public int getCost() { return cost; }
     public int getMoveCount() { return moveCount; }
