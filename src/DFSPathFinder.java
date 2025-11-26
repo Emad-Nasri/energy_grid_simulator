@@ -6,18 +6,29 @@ public class DFSPathFinder {
     private ArrayList<String> path = new ArrayList<>();
     private boolean found = false;
 
+    private int moveCount = 0;  // عدد الحركات
+    private int cost = 0;       // التكلفة
+
     public ArrayList<String> findPath(char[][] grid, int startRow, int startCol, int goalRow, int goalCol) {
 
         visited = new boolean[grid.length][grid[0].length];
         path.clear();
         found = false;
+        moveCount = 0;
+        cost = 0;
 
         dfs(grid, startRow, startCol, goalRow, goalCol);
 
-        if (found)
+        if (found) {
+            moveCount = path.size() - 1;
+            cost = moveCount;
+            System.out.println("Moves = " + moveCount);
+            System.out.println("Cost  = " + cost);
             return path;
-        else
+        } else {
+            System.out.println("No path found.");
             return null;
+        }
     }
 
     private void dfs(char[][] grid, int r, int c, int goalR, int goalC) {
@@ -45,4 +56,7 @@ public class DFSPathFinder {
             path.remove(path.size() - 1);
         }
     }
+
+    public int getMoveCount() { return moveCount; }
+    public int getCost() { return cost; }
 }

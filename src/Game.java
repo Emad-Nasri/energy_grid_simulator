@@ -153,6 +153,9 @@ public class Game {
                 System.out.print(step+" then ");
         }
         System.out.println("End");
+        System.out.println("moves count : "+bfs.getMoveCount());
+        System.out.println("final costs : "+bfs.getCost());
+
         gameOver = true;
     }
 

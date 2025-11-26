@@ -2,6 +2,9 @@ import java.util.*;
 
 public class BFSPathFinder {
 
+    private int moveCount = 0;
+    private int cost = 0;
+
     public ArrayList<String> findPath(char[][] grid, int startR, int startC, int goalR, int goalC) {
 
         int rows = grid.length;
@@ -70,6 +73,18 @@ public class BFSPathFinder {
         path.add("(" + startR + "," + startC + ")");
         Collections.reverse(path);
 
+
+        moveCount = path.size() - 1;
+        cost = moveCount;
+
         return path;
+    }
+
+    public int getMoveCount() {
+        return moveCount;
+    }
+
+    public int getCost() {
+        return cost;
     }
 }
